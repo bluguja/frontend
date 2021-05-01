@@ -1,0 +1,32 @@
+{
+  "name": "JavascriptFrontend",
+  "version": "1.0.0",
+  "description": "JavascriptFrontend",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
+  },
+  "author": "Kamrul Hassan Abir",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "babel-loader": "^8.1.0",
+    "html-webpack-plugin": "^4.4.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "fractional": "^1.0.0",
+    "idempotent-babel-polyfill": "^7.4.4",
+    "live-server": "^1.2.1",
+    "navigo": "^8.11.1",
+    "uniqid": "^5.2.0"
+  }
+}

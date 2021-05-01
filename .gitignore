@@ -1,0 +1,8 @@
+node_modules
+npm-debug.log
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/VanillaJS.iml
+/.idea/vcs.xml
+/.idea/.gitignore
+/.idea/
