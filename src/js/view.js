@@ -164,7 +164,7 @@ const commentEditUpdate =(comment,name) =>{
 }
 
 export const commentBodyHtml = (name, comment) => {
-        return `<div id="${comment.id}commentCard" class="bg-light p-3">
+        return `<div id="${comment.id}commentCard" class="bg-light p-3 fadeInDown">
                     <div class="d-flex flex-row align-items-center">
                         <div class="CommenterName">
                             ${convertName(name)}
