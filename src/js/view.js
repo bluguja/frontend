@@ -199,7 +199,7 @@ export const postBodyHtml = (name, post, likes, comments) => {
     let currentUser = JSON.parse(localStorage.getItem("currentUser")).user.name
     return `
     <div id="${post.id}postCard" >
-    <div class="card">
+    <div class="card fadeInDown">
     <div class="d-flex row">
       <div class="col-md-12">
         <div class="d-flex flex-column comment-section">
