@@ -70,6 +70,12 @@ document.addEventListener("DOMContentLoaded", async function () {
                 let rightPostView = getElement("rightPostView")
                 rightPostView.innerHTML = postForm
             } else {
+                if(response === undefined)
+                {
+                    localStorage.removeItem("currentUser");
+                    currentUser = null
+                    await SetAuthToken(currentUser);
+                }
                 router.navigate('/');
             }
         } else {
@@ -140,8 +146,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 
 
-
-
     // Listen all clickEvent
     document.addEventListener('click', async function (event) {
         event.preventDefault();
@@ -153,12 +157,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         if (element.id === "loginFormBtn") {
             let response = await authentication.login();
-            rootDiv.innerHTML = `<div class="d-flex justify-content-center mt-5 pt-5">
-                                  <div class="spinner-border" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                  </div>
-                                </div>`
             if (response && response.status === 200) {
+                rootDiv.innerHTML = `<div class="d-flex justify-content-center mt-5 pt-5">
+                                      <div class="spinner-border" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                      </div>
+                                    </div>`
               localStorage.setItem("currentUser",JSON.stringify(response.data));
               currentUser = JSON.parse(localStorage.getItem("currentUser"));
               await SetAuthToken(currentUser);

@@ -28,7 +28,7 @@ export class Post {
             .post(`${BACKEND_API_HOST}/posts`, {post: post}, {headers: this.headers})
             .then((response) => response)
             .catch((error) => {
-                console.log("error in create post")
+                return error
             })
     }
 
