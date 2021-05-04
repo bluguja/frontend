@@ -166,7 +166,8 @@ input[type="reset"]:active {
   -ms-transform: scale(0.95);
   transform: scale(0.95);
 }
-
+#sign_up_form > input[type="email"],
+#login_form > input[type="email"],
 #sign_up_form > input[type="text"],
 #sign_up_form > input[type="password"],
 #login_form > input[type="text"],

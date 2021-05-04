@@ -24,7 +24,7 @@ export const signUpForm =
        <span id="error"></span>
        <form id="sign_up_form">
         <input type="text" required id="name" class="fadeIn second" name="name" autocomplete="name"  placeholder="Name">
-        <input type="text" required id="email" class="fadeIn second" name="email" autocomplete="email"  placeholder="Email">
+        <input type="email" required id="email" class="fadeIn second" name="email" autocomplete="email"  placeholder="Email">
         
         <select id="gender" class="formSelect fadeIn second" name="gender" autocomplete="gender" aria-label="Default select example">
           <option value="Other" selected>Other</option>
@@ -49,7 +49,7 @@ export const loginForm =
       <h1 class="p-4">User Login</h1>
       <span id="error"></span>
        <form id="login_form">
-        <input type="text" id="email" class="fadeIn second" name="email" autocomplete="email"  placeholder="Email">
+        <input type="email" id="email" class="fadeIn second" name="email" autocomplete="email"  placeholder="Email">
         <input type="password" id="password" class="fadeIn third" name="password" autocomplete="password"  placeholder="password">
         <input id="loginFormBtn" type="submit" class="fadeIn fourth" value="Log In" data-disable-with="Log in">
       </form>
@@ -275,6 +275,7 @@ export const postDescription = (post) => {
          </div>
          <div class="pt-2">
         <button type="submit" id="${post.id}update" class="btn btn-success">Update</button>
+        <button type="submit" id="${post.id}cancel" class="btn btn-danger">Cancel</button>
         </div>
     </div>
     `

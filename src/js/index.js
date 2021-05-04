@@ -24,6 +24,11 @@ document.addEventListener("DOMContentLoaded", async function () {
         'show': 'add',
         'hide': 'remove'
     };
+    const validateEmail = (email) =>
+    {
+        let regex = /\S+@\S+\.\S+/;
+        return regex.test(email);
+    }
     const getInt = (value) => {
         return parseInt(value.replace(/[^\d.]/g, ''))
     }
@@ -31,6 +36,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         return document.getElementById(id);
     }
     //Helper method end
+
     const navDiv = getElement('navDiv');
     navDiv.innerHTML = navBar
     let posts = getElement("posts")
@@ -156,6 +162,11 @@ document.addEventListener("DOMContentLoaded", async function () {
         if (collapsable) collapsableItem.classList[mapToggle['toggle']]('show')
 
         if (element.id === "loginFormBtn") {
+             if( validateEmail(document.getElementById("email").value) === false)
+             {   getElement("error").innerText = "Enter valid email!"
+                 router.navigate('/login');
+                 return false;
+             }
             let response = await authentication.login();
             if (response && response.status === 200) {
                 rootDiv.innerHTML = `<div class="d-flex justify-content-center mt-5 pt-5">
@@ -171,8 +182,14 @@ document.addEventListener("DOMContentLoaded", async function () {
                 router.navigate('/login');
             }
         } else if (element.id === "signupFormBtn") {
-            if (matchPassword()) {
-                getElement("error").innerText = "Password does not match!"
+            if (matchPassword() ||  validateEmail(document.getElementById("email").value) === false) {
+                if (matchPassword()){
+                    getElement("error").innerText = "Password does not match!"
+                }
+                else
+                {
+                    getElement("error").innerText = "Enter valid email!"
+                }
                 router.navigate('/sign_up');
             } else {
                 let response = await authentication.signup();
@@ -194,8 +211,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             let likableId = element.getAttribute("data-id-value")
             getElement(`${likableId}likesCount`).innerText = `${response.data.likes} people likes this post`
         } else if (element.id === `${id}postEditBtn`) {
-            let post = getElement(id)
-            post.innerText = ''
+            getElement(id).hidden = true
             getElement(`${id}editForm`).hidden = false
         } else if (element.id === `${id}update`) {
             let description = getElement(`${id}edit`).value
@@ -247,6 +263,10 @@ document.addEventListener("DOMContentLoaded", async function () {
             getElement(`${id}commentEditBtn`).hidden = false
             getElement(`${id}commentDeleteBtn`).hidden = false
             getElement(`${id}commentEditForm`).hidden = true
+        }
+        else if (element.id === `${id}cancel`) {
+            getElement(id).hidden = false
+            getElement(`${id}editForm`).hidden = true
         }
         else { return false }
     });
